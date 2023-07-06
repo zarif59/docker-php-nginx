@@ -52,11 +52,11 @@ RUN chmod 600 /home/blog/.ssh/id_rsa
 
 RUN touch /home/blog/.ssh/known_hosts
 # change localhost to your gitea server domain or ip address
-RUN ssh-keyscan -p 22 localhost >> /home/blog/.ssh/known_hosts
+RUN ssh-keyscan -p 22 gitea-url >> /home/blog/.ssh/known_hosts
 
 # setup folder
 WORKDIR /var/www/html
-RUN git clone ssh://git@localhost:22/zarif/_site.git
+RUN git clone ssh://git@gitea-url:22/zarif/_site.git
 
 # Expose the port nginx is reachable on
 EXPOSE 8080

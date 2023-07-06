@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  blog-zarif:
+    image: blog/zarif:v1
+    container_name: blog-zarif
+    restart: unless-stopped
+    ports:
+      - 8080
+    networks:
+      npm_npm-network:
+        ipv4_address: 172.16.238.6
+
+networks:
+  npm_npm-network: #connecting to the exisisting network
+    external: true
+
+# docker build -t blog/zarif:v1 .
